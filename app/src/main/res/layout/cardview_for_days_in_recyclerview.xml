@@ -10,19 +10,18 @@
     android:layout_marginHorizontal="10dp"
     android:elevation="5dp"
     app:contentPadding="10dp"
-    app:cardCornerRadius="15dp">
+    app:cardCornerRadius="30dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/textView_for_day"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:text="Day 2021-11-09"
             android:textColor="?attr/colorOnPrimary"
             android:textSize="25sp"
             android:layout_marginStart="10dp"
@@ -33,12 +32,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginVertical="10dp"
-            android:layout_marginEnd="10dp"
             android:layout_marginStart="30dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView" />
+            app:layout_constraintTop_toBottomOf="@+id/textView_for_day"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
