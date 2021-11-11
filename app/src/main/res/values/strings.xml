@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">currency_app</string>
+    <string name="app_name">CurrencyChecker</string>
+    <string name="string_for_rate_textview">Rate:</string>
 </resources>
