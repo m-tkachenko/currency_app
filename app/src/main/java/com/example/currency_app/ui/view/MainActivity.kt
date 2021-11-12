@@ -29,7 +29,7 @@ class MainActivity : AppCompatActivity() {
         service = Common.retrofitService
         recyclerview_for_days.setHasFixedSize(true)
 
-        service.getCurrencyMap().enqueue(object : Callback<Currency>{
+        service.getCurrencyMap("2021-11-10").enqueue(object : Callback<Currency>{
             override fun onResponse(call: Call<Currency>, response: Response<Currency>) {
                 adapterForDays = response.body()?.let { RecyclerAdapterForDays(it) }
                 adapterForDays?.notifyDataSetChanged()
