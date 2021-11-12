@@ -9,9 +9,7 @@ data class Currency( // CurrencyResponse
     val rates: MutableMap<String, Double>,
     val success: Boolean,
     val timestamp: Int
-) {
-
-}
+)
 
 //data class CurrencyViewModel(
 //    val base: String,
