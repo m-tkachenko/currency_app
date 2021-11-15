@@ -32,28 +32,6 @@ class MainActivity : AppCompatActivity() {
         recyclerview_for_days.setHasFixedSize(true)
         val adapterForDays = RecyclerAdapterForDays(service)
         recyclerview_for_days.adapter = adapterForDays
-        val linearLayoutManager = recyclerview_for_days.layoutManager as LinearLayoutManager
-        // TODO: Remove this
-        var flagOnce = false
 
-        val scrollListener = object : RecyclerView.OnScrollListener() {
-            override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
-                super.onScrollStateChanged(recyclerView, newState)
-                val itemCount = recyclerView.layoutManager?.itemCount
-                // TODO: Find out how to search for last visible item
-                val lastVisibleItemPosition = linearLayoutManager.findLastCompletelyVisibleItemPosition()
-                Log.w("Item", lastVisibleItemPosition.toString())
-
-                if(itemCount == lastVisibleItemPosition + 1) {
-                    adapterForDays.onScrollUpdate()
-                }
-                else if (lastVisibleItemPosition == -1 && !flagOnce) {
-                    adapterForDays.onScrollUpdate()
-                    flagOnce = true
-                }
-            }
-        }
-
-        recyclerview_for_days.addOnScrollListener(scrollListener)
     }
 }

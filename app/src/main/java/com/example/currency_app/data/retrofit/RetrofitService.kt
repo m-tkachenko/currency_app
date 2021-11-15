@@ -8,7 +8,7 @@ import retrofit2.http.Path
 import java.util.*
 
 interface RetrofitService {
-    @GET("{date}?access_key=f9ad8ea054daa3a0b2f7c1da207ffa22")
+    @GET("{date}?access_key=450cbb708d09e9e101cfdcb5e916e72b")
     fun getCurrencyMap(
         @Path("date") date: String
     ): Call<Currency>
