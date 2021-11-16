@@ -24,5 +24,9 @@ class MainActivity : AppCompatActivity() {
         recyclerview_for_days.setHasFixedSize(true)
         val adapterForDays = RecyclerAdapterForDays(service)
         recyclerview_for_days.adapter = adapterForDays
+
+        button_up_to.setOnClickListener {
+            recyclerview_for_days.scrollToPosition(0)
+        }
     }
 }
