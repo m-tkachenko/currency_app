@@ -13,4 +13,16 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/button_up_to"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/recyclerview_for_days"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:src="@drawable/ic_arrow_up"
+        app:tint="@color/white"
+        app:maxImageSize="50dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
