@@ -6,7 +6,7 @@ import retrofit2.http.GET
 import retrofit2.http.Path
 
 interface RetrofitService {
-    @GET("{date}?access_key=450cbb708d09e9e101cfdcb5e916e72b")
+    @GET("{date}?access_key=65fa00d2079cad7e579b1a12d71f14b0")
     fun getCurrencyMap(
         @Path("date") date: String
     ): Call<Currency>

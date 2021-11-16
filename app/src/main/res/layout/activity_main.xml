@@ -23,6 +23,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:src="@drawable/ic_arrow_up"
         app:tint="@color/white"
-        app:maxImageSize="50dp" />
+        app:maxImageSize="50dp"
+        android:contentDescription="Scroll to the up of recyclerview" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
