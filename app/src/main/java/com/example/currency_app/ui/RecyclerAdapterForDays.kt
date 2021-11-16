@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.currency_app.R
 import com.example.currency_app.data.Currency
 import com.example.currency_app.data.retrofit.RetrofitService
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.cardview_for_days_in_recyclerview.view.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -47,7 +48,7 @@ class RecyclerAdapterForDays(private val service: RetrofitService)
             }
 
             override fun onFailure(call: Call<Currency>, t: Throwable) {
-                Log.w("RetrofitFail", "$t")
+                Log.w("RetrofitResponse", "$t")
             }
 
         })

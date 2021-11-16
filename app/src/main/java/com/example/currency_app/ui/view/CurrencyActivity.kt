@@ -13,7 +13,7 @@ class CurrencyActivity : AppCompatActivity() {
         val dayData = intent.getStringExtra("Day")
         val currencyRateData = intent.getStringExtra("CurrencyRate")
 
-        textView_for_day_currency_screen.text = dayData
+        textView_for_day_currency_screen.text = "Day: $dayData \n Rate:"
         textView_for_currency_info_in_currency_screen.text = currencyRateData
     }
 }

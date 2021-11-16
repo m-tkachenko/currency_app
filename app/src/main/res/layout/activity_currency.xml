@@ -32,19 +32,8 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:text="Day 2021-11-10" />
-
-            <TextView
-                android:id="@+id/textView_rate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="@string/string_for_rate_textview"
-                android:textColor="?attr/colorOnPrimary"
-                android:textSize="35sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView_for_day_currency_screen" />
+                tools:text="Day 2021-11-10 \n Rate:"
+                android:textAlignment="center"/>
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardView"
@@ -58,7 +47,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView_rate">
+                app:layout_constraintTop_toBottomOf="@+id/textView_for_day_currency_screen">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
