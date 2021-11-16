@@ -14,7 +14,7 @@ class RecyclerAdapterForCurrencies(private val currencyRates: MutableMap<String,
                                    private val day: String)
     : RecyclerView.Adapter<RecyclerAdapterForCurrencies.ViewHolder>() {
 
-    var listRates: List<String>? = null
+    private var listRates: List<String>? = null
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int
     ): ViewHolder {
 
@@ -38,7 +38,7 @@ class RecyclerAdapterForCurrencies(private val currencyRates: MutableMap<String,
 
     override fun getItemCount() = 20
 
-    inner class ViewHolder(private val view: View): RecyclerView.ViewHolder(view){
+    inner class ViewHolder(view: View): RecyclerView.ViewHolder(view){
         val textviewForCurrencyInfo: TextView = view.findViewById(R.id.textView_for_currency_info)
     }
 }

@@ -16,14 +16,15 @@ import retrofit2.Callback
 import retrofit2.Response
 import java.time.LocalDate
 
+@RequiresApi(Build.VERSION_CODES.O)
 class RecyclerAdapterForDays(private val service: RetrofitService)
     : RecyclerView.Adapter<RecyclerAdapterForDays.ViewHolder>() {
-    @RequiresApi(Build.VERSION_CODES.O)
-    var mDate = LocalDate.now()
+
+    private var mDate: LocalDate = LocalDate.now()
     var listCurrency : MutableList<Currency> = mutableListOf()
 
     init {
-        Log.w("Date", "${mDate.toString()}")
+        Log.w("Date", "$mDate")
         getCurrency(mDate.toString())
     }
 
@@ -35,14 +36,14 @@ class RecyclerAdapterForDays(private val service: RetrofitService)
         return ViewHolder(view)
     }
 
-    fun getCurrency(date: String) {
+    private fun getCurrency(date: String) {
         service.getCurrencyMap(date).enqueue(object : Callback<Currency> {
             override fun onResponse(call: Call<Currency>, response: Response<Currency>) {
 
                 response.body()?.let { listCurrency.add(it) }
                 notifyDataSetChanged()
 
-                Log.w("RetrofitResponse", "${response}")
+                Log.w("RetrofitResponse", "$response")
             }
 
             override fun onFailure(call: Call<Currency>, t: Throwable) {
@@ -57,7 +58,7 @@ class RecyclerAdapterForDays(private val service: RetrofitService)
 
         if(position == (itemCount - 1)) {
             mDate = mDate.minusDays(1)
-            Log.w("Date", "${mDate.toString()}")
+            Log.w("Date", "$mDate")
             getCurrency(mDate.toString())
         }
 
