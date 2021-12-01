@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.currency_app.R
 import com.example.currency_app.data.Currency
 import com.example.currency_app.data.retrofit.RetrofitService
+import com.example.currency_app.databinding.ActivityMainBinding
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.cardview_for_days_in_recyclerview.view.*
 import retrofit2.Call
@@ -18,65 +19,69 @@ import retrofit2.Response
 import java.time.LocalDate
 
 @RequiresApi(Build.VERSION_CODES.O)
-class RecyclerAdapterForDays(private val service: RetrofitService)
-    : RecyclerView.Adapter<RecyclerAdapterForDays.ViewHolder>() {
+class RecyclerAdapterForDays : RecyclerView.Adapter<RecyclerAdapterForDays.ViewHolder>() {
 
     private var mDate: LocalDate = LocalDate.now()
-    var listCurrency : MutableList<Currency> = mutableListOf()
+    var listCurrency = mutableListOf<Currency>()
 
-    init {
-        Log.w("Date", "$mDate")
-        getCurrency(mDate.toString())
+    fun setList(list: List<Currency>){
+        this.listCurrency = list.toMutableList()
+        notifyDataSetChanged()
     }
+
+//    init {
+//        Log.w("Date", "$mDate")
+//        getCurrency(mDate.toString())
+//    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int)
     : ViewHolder {
-        val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.cardview_for_days_in_recyclerview, parent, false)
+        val inflater = LayoutInflater.from(parent.context)
+        val binding = ActivityMainBinding.inflate(inflater, parent, false)
 
-        return ViewHolder(view)
+        return ViewHolder(binding)
     }
 
-    private fun getCurrency(date: String) {
-        service.getCurrencyMap(date).enqueue(object : Callback<Currency> {
-            override fun onResponse(call: Call<Currency>, response: Response<Currency>) {
-
-                response.body()?.let { listCurrency.add(it) }
-                notifyDataSetChanged()
-
-                Log.w("RetrofitResponse", "$response")
-            }
-
-            override fun onFailure(call: Call<Currency>, t: Throwable) {
-                Log.w("RetrofitResponse", "$t")
-            }
-
-        })
-    }
+//    private fun getCurrency(date: String) {
+//        service.getCurrencyMap(date).enqueue(object : Callback<Currency> {
+//            override fun onResponse(call: Call<Currency>, response: Response<Currency>) {
+//
+//                response.body()?.let { listCurrency.add(it) }
+//                notifyDataSetChanged()
+//
+//                Log.w("RetrofitResponse", "$response")
+//            }
+//
+//            override fun onFailure(call: Call<Currency>, t: Throwable) {
+//                Log.w("RetrofitResponse", "$t")
+//            }
+//
+//        })
+//    }
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
-        if(position == (itemCount - 1)) {
-            mDate = mDate.minusDays(1)
-            Log.w("Date", "$mDate")
-            getCurrency(mDate.toString())
-        }
+        val listItem = listCurrency[position]
 
-        val mapItem = listCurrency[position]
+        holder.binding.recyclerviewForDays.textView_for_day.text = "Dat ${listItem.date}"
+        holder.binding.recyclerviewForDays.recyclerview_for_currencies.adapter =
+            RecyclerAdapterForCurrencies(listItem.rates, listItem.date)
 
-        holder.connect(mapItem)
+//        if(position == (itemCount - 1)) {
+//            mDate = mDate.minusDays(1)
+//            Log.w("Date", "$mDate")
+//            getCurrency(mDate.toString())
+//        }
+//
+//
     }
 
     override fun getItemCount(): Int {
         return listCurrency.size
     }
 
-    inner class ViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
-        fun connect(item: Currency) {
-            view.textView_for_day.text = "Day ${item.date}"
-            view.recyclerview_for_currencies.adapter =
-                RecyclerAdapterForCurrencies(item.rates, item.date)
-        }
+    inner class ViewHolder(val binding : ActivityMainBinding) : RecyclerView.ViewHolder(binding.root) {
+
     }
 }

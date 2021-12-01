@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:id="@+id/cardview_for_days"
@@ -10,12 +11,14 @@
     android:layout_marginHorizontal="10dp"
     android:elevation="5dp"
     app:contentPadding="10dp"
-    app:cardCornerRadius="30dp">
+    app:cardCornerRadius="30dp"
+    tools:context=".ui.view.MainActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintlauoyt_for_currency_cards"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        tools:context=".ui.view.MainActivity">
 
         <TextView
             android:id="@+id/textView_for_day"

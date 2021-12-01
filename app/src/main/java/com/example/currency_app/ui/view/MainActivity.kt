@@ -25,7 +25,7 @@ class MainActivity : AppCompatActivity() {
         vm = ViewModelProvider(this).get(MainViewModel::class.java)
 
         recyclerview_for_days.setHasFixedSize(true)
-        val adapterForDays = RecyclerAdapterForDays(service)
+        val adapterForDays = RecyclerAdapterForDays()
         recyclerview_for_days.adapter = adapterForDays
 
         button_up_to.setOnClickListener {
